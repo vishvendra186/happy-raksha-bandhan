@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Raksha Bandhan</title>
+    <!-- Sundar Font ke liye Google Fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    
     <style>
         body {
             margin: 0;
@@ -12,40 +15,120 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #ff9933, #ffffff, #138808);
-            font-family: 'Arial', sans-serif;
+            /* Pinterest video jaisa rich dark red gradient background */
+            background: radial-gradient(circle, #ff4d4d, #990000); 
+            font-family: 'Poppins', sans-serif;
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
+
+        /* Garland (Genda Phool ki Mala) Animation */
+        .garland {
+            position: absolute;
+            top: -10px;
+            width: 50px;
+            height: 120%;
+            /* Yahan apni phool ki mala ki transparent image ka naam lagayein */
+            background-image: url('garland_image.png'); 
+            background-size: contain;
+            background-repeat: repeat-y;
+            transform-origin: top center;
+            animation: swing 4s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        .garland-left { left: 8%; }
+        .garland-right { right: 8%; }
+
+        @keyframes swing {
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
+        }
+
+        /* Main Container setup */
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.12); /* Subtle glassmorphism effect */
+            backdrop-filter: blur(5px);
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border: 3px solid #ff4500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
+            max-width: 500px;
+            margin: 0 20px;
         }
-        h1 {
-            color: #d11919;
-            font-size: 3rem;
-            margin: 0 0 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        p {
-            color: #333;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
+
         .rakhi-icon {
-            font-size: 4rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 5px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: 3px;
+        }
+
+        /* Cursive Title (Pinterest jaisa yellow font) */
+        .cursive-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #fffb00;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 15px rgba(255, 251, 0, 0.6);
+        }
+
+        p {
+            color: #ffe6e6;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Cartoon Character Image Area */
+        .character-container {
+            margin-top: 20px;
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        .cartoon-img {
+            width: 260px;
+            height: auto;
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-12px); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Dono side ki genda phool ki malayein -->
+    <div class="garland garland-left"></div>
+    <div class="garland garland-right"></div>
+
     <div class="container">
         <div class="rakhi-icon">✨🪔✨</div>
-        <h1>HAPPY RAKSHA BANDHAN</h1>
+        <h1>HAPPY</h1>
+        <div class="cursive-title">Raksha Bandhan</div>
+        
         <p>भाई-बहन के अटूट प्यार के पावन पर्व की हार्दिक शुभकामनाएं!</p>
+
+        <!-- Cartoon Image yahan load hogi -->
+        <div class="character-container">
+            <img src="brother_sister.png" alt="Brother and Sister" class="cartoon-img">
+        </div>
     </div>
 
 </body>
