@@ -158,7 +158,7 @@
 
     <script>
         // ===== IMPORTANT: Apna Google Apps Script Web App URL yahan paste karein =====
-        const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxxKcU6sca9hq1eQtcX8ygOrlIfSqTxmsD42xFAnEMHxP05ic0aVkoFWwDbkOz4_n1acg/exec";
+        const WEBAPP_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
 
         function getQueryParam(name) {
             const params = new URLSearchParams(window.location.search);
@@ -175,7 +175,6 @@
             document.getElementById('blockedMessage').style.display = 'block';
         }
 
-        // JSONP callback jo Google Apps Script se response leta hai
         function handleViewResponse(result) {
             if (result && result.blocked) {
                 showBlocked();
@@ -199,10 +198,13 @@
                 return;
             }
 
-            const script = document.createElement('script');
-            script.src = WEBAPP_URL + "?id=" + encodeURIComponent(id) + "&callback=handleViewResponse";
-            script.onerror = function () { showMain(); };
-            document.body.appendChild(script);
+            fetch(WEBAPP_URL + "?id=" + encodeURIComponent(id))
+                .then(function (res) { return res.json(); })
+                .then(function (result) { handleViewResponse(result); })
+                .catch(function (err) {
+                    console.error("View tracking failed:", err);
+                    showMain();
+                });
         };
     </script>
 
